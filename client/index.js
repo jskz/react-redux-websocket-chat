@@ -52,7 +52,7 @@ const store = finalCreateStore(reducer)
 ready(() => {
     injectTapEventPlugin()
 
-    socket = new WebSocket(`ws://${window.location.hostname}:${DEFAULT_PORT}/`)
+    socket = new WebSocket(`ws://${window.location.hostname}:8080/`)
     socket.onmessage = (m) => {
         try {
             let message = JSON.parse(m.data)
