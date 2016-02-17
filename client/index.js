@@ -9,8 +9,6 @@ import App from './components/app'
 import actions from './actions'
 import reducer from './reducers'
 
-import { DEFAULT_PORT } from '../config'
-
 let socket = null
 
 const logoutRedirectMiddleware = store => next => action => {
