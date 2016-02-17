@@ -9,6 +9,8 @@ import App from './components/app'
 import actions from './actions'
 import reducer from './reducers'
 
+import { DEFAULT_PORT } from '../config'
+
 let socket = null
 
 const logoutRedirectMiddleware = store => next => action => {
@@ -19,7 +21,6 @@ const logoutRedirectMiddleware = store => next => action => {
         }
 
         const logoutUrl = `//${window.location.host}${window.location.pathname}logout`
-        console.log(logoutUrl)
         window.location.assign(logoutUrl)
     } else {
         next(action)
@@ -27,19 +28,13 @@ const logoutRedirectMiddleware = store => next => action => {
 }
 
 const webSocketMiddleware = store => next => action => {
-    switch(action.type) {
-        case actions.INPUT_SUBMITTED:
-            if(null !== socket) {
-                socket.send(JSON.stringify({
-                    type: actions.CHAT_MESSAGE,
-                    data: action.data
-                }))
-            }
-
-            break
-
-        default:
-            break
+    if(actions.INPUT_SUBMITTED === action.type) {
+        if(null !== socket) {
+            socket.send(JSON.stringify({
+                type: actions.CHAT_MESSAGE,
+                data: action.data
+            }))
+        }
     }
 
     next(action)
@@ -57,7 +52,7 @@ const store = finalCreateStore(reducer)
 ready(() => {
     injectTapEventPlugin()
 
-    socket = new WebSocket(`ws://${window.location.hostname}:8080/`)
+    socket = new WebSocket(`ws://${window.location.hostname}:${DEFAULT_PORT}/`)
     socket.onmessage = (m) => {
         try {
             let message = JSON.parse(m.data)
