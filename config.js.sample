@@ -1,0 +1,13 @@
+module.exports = {
+    BASE_URL:               'http://localhost:8080/',
+    GOOGLE_RETURN_URL:      'http://localhost:8080/auth/google/return',
+    GOOGLE_CLIENT_ID:       '',
+    GOOGLE_CLIENT_SECRET:   '',
+    SESSION_SECRET:         'HIGHLY_SECRET_DATUM',
+    STATIC_FILES:           __dirname + '/static',
+    DESIRED_OAUTH_SCOPE: [
+        'https://www.googleapis.com/auth/plus.login',
+        'https://www.googleapis.com/auth/plus.me',
+        'https://www.googleapis.com/auth/userinfo.email'
+    ]
+}

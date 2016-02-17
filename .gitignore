@@ -1,0 +1,6 @@
+.*
+!.babelrc
+!.gitignore
+node_modules/
+static/
+config.js
