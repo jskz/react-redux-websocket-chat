@@ -81,8 +81,6 @@ app.ws('/', function(ws, req) {
             name:       displayName,
             socket:     ws
         })
-        console.log('pushed')
-        console.log(currentUsers)
 
         currentUsers
             .filter(u => u.id !== profileId)
@@ -136,8 +134,6 @@ app.ws('/', function(ws, req) {
                 })))
                 break
         }
-
-
     })
 })
 
