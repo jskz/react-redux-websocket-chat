@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import AppBar from 'material-ui/lib/app-bar'
 import FlatButton from 'material-ui/lib/flat-button'
 import Paper from 'material-ui/lib/paper'
-import FlexboxGrid from 'react-flexbox-grid'
 
 import Chat from './chat'
 import Input from './input'
